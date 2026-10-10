@@ -7,9 +7,9 @@ typeattribute lge_dataservice_app mlstrustedsubject;
 hwbinder_use(lge_dataservice_app)
 
 # App data
-allow lge_dataservice_app app_data_file:dir { getattr search create_dir_perms };
-allow lge_dataservice_app app_data_file:file { open create_file_perms };
-allow lge_dataservice_app app_file:lnk_file r_file_perms;
+allow lge_dataservice_app radio_data_file:dir { getattr search create_dir_perms };
+allow lge_dataservice_app radio_data_file:file { open create_file_perms };
+allow lge_dataservice_app radio_file:lnk_file r_file_perms;
 
 # System services 
 allow lge_dataservice_app app_api_service:service_manager find;
