@@ -5,4 +5,4 @@ r_dir_file(vendor_wcnss_service, persist_lg_wlan_file);
 
 allow vendor_wcnss_service sysfs_net:dir r_dir_perms;
 
-r_dir_file(vendor_wcnss_service vendor_sysfs_slpi)
+r_dir_file(vendor_wcnss_service, vendor_sysfs_slpi)
