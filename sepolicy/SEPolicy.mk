@@ -11,6 +11,9 @@ else ifeq ($(TARGET_BOARD_PLATFORM),sdm845)
 	SEPOLICY_PLATFORM := legacy-um
 else
 	SEPOLICY_PLATFORM := vndr
+	BOARD_SEPOLICY_M4DEFS += \
+		sysfs_battery_supply=vendor_sysfs_battery_supply \
+		sysfs_usb_supply=vendor_sysfs_usb_supply
 endif
 
 SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += hardware/lge/sepolicy/private
