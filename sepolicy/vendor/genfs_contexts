@@ -1,6 +1,6 @@
 # Battery
-genfscon sysfs /devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-02/c440000.qcom,spmi:qcom,pm8150b@2:qpnp,fg/power_supply/bms/capacity_raw u:object_r:sysfs_battery_supply:s0
-genfscon sysfs /devices/platform/soc/880000.i2c/i2c-1/1-0061/power_supply/wireless                                                            u:object_r:sysfs_battery_supply:s0
+genfscon sysfs /devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-02/c440000.qcom,spmi:qcom,pm8150b@2:qpnp,fg/power_supply/bms/capacity_raw u:object_r:vendor_sysfs_battery_supply:s0
+genfscon sysfs /devices/platform/soc/880000.i2c/i2c-1/1-0061/power_supply/wireless                                                            u:object_r:vendor_sysfs_battery_supply:s0
 
 # Camera
 genfscon sysfs /devices/virtual/input/input1/flicker_sw_power_state u:object_r:sysfs_camera_sensors:s0
