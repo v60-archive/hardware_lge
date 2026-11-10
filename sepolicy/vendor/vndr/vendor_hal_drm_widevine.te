@@ -1,6 +1,13 @@
+type vendor_hal_drm_widevine, domain;
+hal_server_domain(vendor_hal_drm_widevine, hal_drm)
+
+type vendor_hal_drm_widevine_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(vendor_hal_drm_widevine)
+
 r_dir_file(vendor_hal_drm_widevine, widevine_data_file);
 r_dir_file(vendor_hal_drm_widevine, firmware_data_file);
 allow vendor_hal_drm_widevine firmware_data_file:file { rw_file_perms setattr };
 
 allow vendor_hal_drm_widevine mnt_vendor_file:dir r_dir_perms;
 r_dir_file(vendor_hal_drm_widevine, persist_lg_data_file);
+
