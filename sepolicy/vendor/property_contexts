@@ -23,9 +23,6 @@ ro.vendor.lge.build.target_operator u:object_r:vendor_lge_misc_prop:s0
 ro.vendor.lge.capp_cupss.           u:object_r:vendor_lge_misc_prop:s0
 ro.vendor.lge.swversion             u:object_r:vendor_lge_misc_prop:s0
 
-# LiveDisplay
-vendor.display.mode u:object_r:vendor_display_prop:s0
-
 # MDM
 persist.vendor.mdm_helper.fail_action u:object_r:vendor_mdm_helper_prop:s0
 
