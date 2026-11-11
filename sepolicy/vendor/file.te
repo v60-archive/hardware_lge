@@ -18,7 +18,6 @@ type widevine_data_file, file_type;
 type power_file, file_type;
 
 # Proc
-type proc_swappiness, proc_type, fs_type;
 type proc_laptop_mode, proc_type, fs_type;
 
 # SNS
