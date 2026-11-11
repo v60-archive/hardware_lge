@@ -77,5 +77,4 @@ genfscon sysfs /devices/platform/soc/98c000.i2c/i2c-3/3-0061/power_supply/wirele
 genfscon sysfs /devices/platform/soc/990000.i2c/i2c-1/1-0061/power_supply/wireless u:object_r:sysfs_powersupply_wireless:s0
 
 # zRAM
-genfscon proc /sys/vm/swappiness         u:object_r:proc_swappiness:s0
 genfscon proc /sys/vm/laptop_mod         u:object_r:proc_laptop_mode:s0
