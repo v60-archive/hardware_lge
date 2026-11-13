@@ -35,7 +35,12 @@ genfscon sysfs /devices/virtual/input/lge_touch u:object_r:sysfs_lge_touch:s0
 
 # UFS
 genfscon sysfs /devices/platform/soc/1d84000.ufshc/host0/target0:0:0/0:0:0:0/block/sda/sda21/partition u:object_r:sysfs_devices_block:s0
+genfscon sysfs /devices/platform/soc/1d84000.ufshc/host0/target0:0:0/0:0:0:0/block/sda/sda28/partition u:object_r:sysfs_devices_block:s0
+genfscon sysfs /devices/platform/soc/1d84000.ufshc/host0/target0:0:0/0:0:0:0/block/sda/mq              u:object_r:sysfs_devices_block:s0
 genfscon sysfs /devices/platform/soc/1d84000.ufshc/host0/target0:0:0/0:0:0:0/block/sda/queue/zoned     u:object_r:sysfs_devices_block:s0
+
+# Net (MHI rmnet)
+genfscon sysfs /devices/platform/soc/1c10000.qcom,pcie/pci0002:00/0002:00:00.0/0002:01:00.0/mhi_0306_02.01.00/mhi_0306_02.01.00_IP_HW0/net u:object_r:sysfs_net:s0
 
 # Veneer
 genfscon sysfs /devices/platform/vendor/vendor:lge-veneer-psy/power_supply/veneer u:object_r:sysfs_veneer:s0
@@ -52,6 +57,7 @@ genfscon sysfs /devices/platform/soc/98c000.i2c/i2c-3/3-0010/98c000.i2c:qcom,smb
 genfscon sysfs /devices/platform/soc/98c000.i2c/i2c-3/3-0061/power_supply/wireless/wakeup                                                         u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/990000.i2c/i2c-1/1-0061/power_supply/wireless/wakeup38                                                       u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/990000.i2c/i2c-1/1-0061/wakeup                                                                               u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/b0000000.qcom,cnss-qca6390/wakeup                                                                             u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/c80000.i2c/i2c-3/3-0020/wakeup                                                                               u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/c80000.i2c/i2c-4/4-0020/wakeup                                                                               u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/c80000.i2c/i2c-4/4-0020/wakeup/wakeup8                                                                       u:object_r:sysfs_wakeup:s0
