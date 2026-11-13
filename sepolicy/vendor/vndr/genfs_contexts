@@ -15,3 +15,138 @@ genfscon sysfs /kernel/boot_cdsp/boot                                           
 
 # Sensors
 genfscon sysfs /devices/platform/soc/5c00000.qcom,ssc/subsys2                        u:object_r:vendor_sysfs_ssr:s0
+
+# genfs_contexts for the LG V60 (timelm) on the msm-5.15 kernel.
+#
+# The vendor policy (device/qcom/sepolicy_vndr + hardware/lge/sepolicy) labels sysfs by
+# 4.19 device paths. These rules give the same types to the 5.15 paths. Every path below
+# was checked against a live 5.15 sysfs listing (prefix match, as genfscon matches);
+# the 4.19 rule it replaces is in the comment above it.
+#
+# genfscon is a string-prefix match, so ".../wakeup" also covers the numbered
+# ".../wakeupNN" directories 5.15 creates.
+
+# SPMI PMIC slaves. 5.15 names them "<bus>-<usid>" (spmi-0/0-02); 4.19 used the CAF
+# "spmi<bus>-<usid>" name (spmi-0/spmi0-02) that sepolicy_vndr still matches.
+# Battery/USB supply, extcon, typec, LEDs and wakeup nodes of pm8150, pm8150b, pm8150l.
+# was /devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-00/c440000.qcom,spmi:qcom,pm8150@0:qcom,pm8150_rtc/wakeup
+genfscon sysfs /devices/platform/soc/c440000.qcom,spmi/spmi-0/0-00/c440000.qcom,spmi:qcom,pm8150@0:qcom,pm8150_rtc/wakeup u:object_r:sysfs_wakeup:s0
+# was /devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-00/c440000.qcom,spmi:qcom,pm8150@0:qcom,power-on@800/wakeup
+genfscon sysfs /devices/platform/soc/c440000.qcom,spmi/spmi-0/0-00/c440000.qcom,spmi:qcom,pm8150@0:qcom,power-on@800/wakeup u:object_r:sysfs_wakeup:s0
+# was /devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-02/c440000.qcom,spmi:qcom,pm8150b@2:qcom,power-on@800/wakeup
+genfscon sysfs /devices/platform/soc/c440000.qcom,spmi/spmi-0/0-02/c440000.qcom,spmi:qcom,pm8150b@2:qcom,power-on@800/wakeup u:object_r:sysfs_wakeup:s0
+# was /devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-02/c440000.qcom,spmi:qcom,pm8150b@2:qcom,qpnp-smb5/extcon
+genfscon sysfs /devices/platform/soc/c440000.qcom,spmi/spmi-0/0-02/c440000.qcom,spmi:qcom,pm8150b@2:qcom,qpnp-smb5/extcon u:object_r:sysfs_extcon:s0
+# was /devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-02/c440000.qcom,spmi:qcom,pm8150b@2:qcom,qpnp-smb5/power_supply/battery
+genfscon sysfs /devices/platform/soc/c440000.qcom,spmi/spmi-0/0-02/c440000.qcom,spmi:qcom,pm8150b@2:qcom,qpnp-smb5/power_supply/battery u:object_r:vendor_sysfs_battery_supply:s0
+# was /devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-02/c440000.qcom,spmi:qcom,pm8150b@2:qcom,qpnp-smb5/power_supply/battery/wakeup
+genfscon sysfs /devices/platform/soc/c440000.qcom,spmi/spmi-0/0-02/c440000.qcom,spmi:qcom,pm8150b@2:qcom,qpnp-smb5/power_supply/battery/wakeup u:object_r:sysfs_wakeup:s0
+# was /devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-02/c440000.qcom,spmi:qcom,pm8150b@2:qcom,qpnp-smb5/power_supply/dc
+genfscon sysfs /devices/platform/soc/c440000.qcom,spmi/spmi-0/0-02/c440000.qcom,spmi:qcom,pm8150b@2:qcom,qpnp-smb5/power_supply/dc u:object_r:vendor_sysfs_battery_supply:s0
+# was /devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-02/c440000.qcom,spmi:qcom,pm8150b@2:qcom,qpnp-smb5/power_supply/dc/wakeup
+genfscon sysfs /devices/platform/soc/c440000.qcom,spmi/spmi-0/0-02/c440000.qcom,spmi:qcom,pm8150b@2:qcom,qpnp-smb5/power_supply/dc/wakeup u:object_r:sysfs_wakeup:s0
+# was /devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-02/c440000.qcom,spmi:qcom,pm8150b@2:qcom,qpnp-smb5/power_supply/pc_port
+genfscon sysfs /devices/platform/soc/c440000.qcom,spmi/spmi-0/0-02/c440000.qcom,spmi:qcom,pm8150b@2:qcom,qpnp-smb5/power_supply/pc_port u:object_r:vendor_sysfs_usb_supply:s0
+# was /devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-02/c440000.qcom,spmi:qcom,pm8150b@2:qcom,qpnp-smb5/power_supply/pc_port/wakeup
+genfscon sysfs /devices/platform/soc/c440000.qcom,spmi/spmi-0/0-02/c440000.qcom,spmi:qcom,pm8150b@2:qcom,qpnp-smb5/power_supply/pc_port/wakeup u:object_r:sysfs_wakeup:s0
+# was /devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-02/c440000.qcom,spmi:qcom,pm8150b@2:qcom,qpnp-smb5/power_supply/usb
+genfscon sysfs /devices/platform/soc/c440000.qcom,spmi/spmi-0/0-02/c440000.qcom,spmi:qcom,pm8150b@2:qcom,qpnp-smb5/power_supply/usb u:object_r:vendor_sysfs_usb_supply:s0
+# was /devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-02/c440000.qcom,spmi:qcom,pm8150b@2:qcom,qpnp-smb5/power_supply/usb/wakeup
+genfscon sysfs /devices/platform/soc/c440000.qcom,spmi/spmi-0/0-02/c440000.qcom,spmi:qcom,pm8150b@2:qcom,qpnp-smb5/power_supply/usb/wakeup u:object_r:sysfs_wakeup:s0
+# was /devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-02/c440000.qcom,spmi:qcom,pm8150b@2:qcom,qpnp-smb5/wakeup
+genfscon sysfs /devices/platform/soc/c440000.qcom,spmi/spmi-0/0-02/c440000.qcom,spmi:qcom,pm8150b@2:qcom,qpnp-smb5/wakeup u:object_r:sysfs_wakeup:s0
+# was /devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-02/c440000.qcom,spmi:qcom,pm8150b@2:qcom,sdam-qnovo@b000/wakeup
+genfscon sysfs /devices/platform/soc/c440000.qcom,spmi/spmi-0/0-02/c440000.qcom,spmi:qcom,pm8150b@2:qcom,sdam-qnovo@b000/wakeup u:object_r:sysfs_wakeup:s0
+# was /devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-02/c440000.qcom,spmi:qcom,pm8150b@2:qcom,usb-pdphy@1700/extcon
+genfscon sysfs /devices/platform/soc/c440000.qcom,spmi/spmi-0/0-02/c440000.qcom,spmi:qcom,pm8150b@2:qcom,usb-pdphy@1700/extcon u:object_r:sysfs_extcon:s0
+# was /devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-02/c440000.qcom,spmi:qcom,pm8150b@2:qcom,usb-pdphy@1700/usbpd/usbpd0
+genfscon sysfs /devices/platform/soc/c440000.qcom,spmi/spmi-0/0-02/c440000.qcom,spmi:qcom,pm8150b@2:qcom,usb-pdphy@1700/usbpd/usbpd0 u:object_r:vendor_sysfs_usbpd_device:s0
+# was /devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-02/c440000.qcom,spmi:qcom,pm8150b@2:qcom,usb-pdphy@1700/usbpd/usbpd0/wakeup
+genfscon sysfs /devices/platform/soc/c440000.qcom,spmi/spmi-0/0-02/c440000.qcom,spmi:qcom,pm8150b@2:qcom,usb-pdphy@1700/usbpd/usbpd0/wakeup u:object_r:sysfs_wakeup:s0
+# was /devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-02/c440000.qcom,spmi:qcom,pm8150b@2:qpnp,fg/power_supply/bms
+genfscon sysfs /devices/platform/soc/c440000.qcom,spmi/spmi-0/0-02/c440000.qcom,spmi:qcom,pm8150b@2:qpnp,fg/power_supply/bms u:object_r:vendor_sysfs_battery_supply:s0
+# was /devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-02/c440000.qcom,spmi:qcom,pm8150b@2:qpnp,fg/power_supply/bms/wakeup
+genfscon sysfs /devices/platform/soc/c440000.qcom,spmi/spmi-0/0-02/c440000.qcom,spmi:qcom,pm8150b@2:qpnp,fg/power_supply/bms/wakeup u:object_r:sysfs_wakeup:s0
+# was /devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-02/c440000.qcom,spmi:qcom,pm8150b@2:qpnp,fg/wakeup
+genfscon sysfs /devices/platform/soc/c440000.qcom,spmi/spmi-0/0-02/c440000.qcom,spmi:qcom,pm8150b@2:qpnp,fg/wakeup u:object_r:sysfs_wakeup:s0
+# was /devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-03/c440000.qcom,spmi:qcom,pm8150b@3:qcom,leds@d000/leds/hr_led1
+genfscon sysfs /devices/platform/soc/c440000.qcom,spmi/spmi-0/0-03/c440000.qcom,spmi:qcom,pm8150b@3:qcom,leds@d000/leds/hr_led1 u:object_r:vendor_sysfs_graphics:s0
+# was /devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-03/c440000.qcom,spmi:qcom,pm8150b@3:qcom,leds@d000/leds/hr_led2
+genfscon sysfs /devices/platform/soc/c440000.qcom,spmi/spmi-0/0-03/c440000.qcom,spmi:qcom,pm8150b@3:qcom,leds@d000/leds/hr_led2 u:object_r:vendor_sysfs_graphics:s0
+# was /devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-04/c440000.qcom,spmi:qcom,pm8150l@4:qcom,power-on@800/wakeup
+genfscon sysfs /devices/platform/soc/c440000.qcom,spmi/spmi-0/0-04/c440000.qcom,spmi:qcom,pm8150l@4:qcom,power-on@800/wakeup u:object_r:sysfs_wakeup:s0
+# was /devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-05/c440000.qcom,spmi:qcom,pm8150l@5:qcom,leds@d000/leds/blue
+genfscon sysfs /devices/platform/soc/c440000.qcom,spmi/spmi-0/0-05/c440000.qcom,spmi:qcom,pm8150l@5:qcom,leds@d000/leds/blue u:object_r:vendor_sysfs_graphics:s0
+# was /devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-05/c440000.qcom,spmi:qcom,pm8150l@5:qcom,leds@d000/leds/green
+genfscon sysfs /devices/platform/soc/c440000.qcom,spmi/spmi-0/0-05/c440000.qcom,spmi:qcom,pm8150l@5:qcom,leds@d000/leds/green u:object_r:vendor_sysfs_graphics:s0
+# was /devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-05/c440000.qcom,spmi:qcom,pm8150l@5:qcom,leds@d000/leds/red
+genfscon sysfs /devices/platform/soc/c440000.qcom,spmi/spmi-0/0-05/c440000.qcom,spmi:qcom,pm8150l@5:qcom,leds@d000/leds/red u:object_r:vendor_sysfs_graphics:s0
+# was /devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-05/c440000.qcom,spmi:qcom,pm8150l@5:qcom,leds@d300/leds
+genfscon sysfs /devices/platform/soc/c440000.qcom,spmi/spmi-0/0-05/c440000.qcom,spmi:qcom,pm8150l@5:qcom,leds@d300/leds u:object_r:sysfs_leds:s0
+# was /devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-08/c440000.qcom,spmi:qcom,pmxprairie@8:qcom,power-on@800/wakeup
+genfscon sysfs /devices/platform/soc/c440000.qcom,spmi/spmi-0/0-08/c440000.qcom,spmi:qcom,pmxprairie@8:qcom,power-on@800/wakeup u:object_r:sysfs_wakeup:s0
+
+# QUP serial engines are children of their GENI wrapper on 5.15.
+# was /devices/platform/soc/998000.qcom,qup_uart/wakeup
+genfscon sysfs /devices/platform/soc/9c0000.qcom,qupv3_0_geni_se/998000.qcom,qup_uart/wakeup u:object_r:sysfs_wakeup:s0
+
+# Peripheral loaders are remoteproc devices on 5.15 (qcom,lpass/ssc/turing ->
+# remoteproc-adsp/slpi/cdsp).
+# was /devices/platform/soc/17300000.qcom,lpass/wakeup
+genfscon sysfs /devices/platform/soc/17300000.remoteproc-adsp/wakeup u:object_r:sysfs_wakeup:s0
+# was /devices/platform/soc/5c00000.qcom,ssc/wakeup
+genfscon sysfs /devices/platform/soc/5c00000.remoteproc-slpi/wakeup u:object_r:sysfs_wakeup:s0
+# was /devices/platform/soc/8300000.qcom,turing/wakeup
+genfscon sysfs /devices/platform/soc/8300000.remoteproc-cdsp/wakeup u:object_r:sysfs_wakeup:s0
+
+# SDX55 MHI devices: 5.15 MHI puts them under the controller device
+# (mhi_<id>/mhi_<id>_<chan>); 4.19 used <id>_<chan> directly under the PCI function.
+# was /devices/platform/soc/1c10000.qcom,pcie/pci0002:00/0002:00:00.0/0002:01:00.0/0306_02.01.00_EFS/wakeup
+genfscon sysfs /devices/platform/soc/1c10000.qcom,pcie/pci0002:00/0002:00:00.0/0002:01:00.0/mhi_0306_02.01.00/mhi_0306_02.01.00_EFS/wakeup u:object_r:sysfs_wakeup:s0
+# was /devices/platform/soc/1c10000.qcom,pcie/pci0002:00/0002:00:00.0/0002:01:00.0/0306_02.01.00_IP_HW0/net
+genfscon sysfs /devices/platform/soc/1c10000.qcom,pcie/pci0002:00/0002:00:00.0/0002:01:00.0/mhi_0306_02.01.00/mhi_0306_02.01.00_IP_HW0/net u:object_r:sysfs_net:s0
+# was /devices/platform/soc/1c10000.qcom,pcie/pci0002:00/0002:00:00.0/0002:01:00.0/0306_02.01.00_QMI0
+genfscon sysfs /devices/platform/soc/1c10000.qcom,pcie/pci0002:00/0002:00:00.0/0002:01:00.0/mhi_0306_02.01.00/mhi_0306_02.01.00_QMI0 u:object_r:vendor_sysfs_mhi:s0
+# was /devices/platform/soc/1c10000.qcom,pcie/pci0002:00/0002:00:00.0/0002:01:00.0/0306_02.01.00_QMI1
+genfscon sysfs /devices/platform/soc/1c10000.qcom,pcie/pci0002:00/0002:00:00.0/0002:01:00.0/mhi_0306_02.01.00/mhi_0306_02.01.00_QMI1 u:object_r:vendor_sysfs_mhi:s0
+
+# ---------------------------------------------------------------------------
+# TODO before enforcing (no 1:1 path on 5.15; decide per item). Not rules yet.
+# ---------------------------------------------------------------------------
+#
+# hvdcp_opti (vendor_hvdcp): 5.15 charging uses IIO channels. It scans
+#   /sys/bus/iio/devices/*/name (96 + 92 denials on img146: "devices" dir and
+#   "name" files, label sysfs). The IIO devices are under the SPMI PMICs:
+#     .../spmi-0/0-00/...pm8150@0:vadc@3100/iio:device0
+#     .../spmi-0/0-02/...pm8150b@2:vadc@3100/iio:device1
+#     .../spmi-0/0-02/...pm8150b@2:qcom,qpnp-smb5/iio:device3
+#     .../spmi-0/0-02/...pm8150b@2:qpnp,fg/iio:device4
+#     .../spmi-0/0-04/...pm8150l@4:vadc@3100/iio:device2
+#   The 4.19 policy only gives it sysfs_charger (smb1390 nodes, not on timelm).
+#   Needs a type for these iio devices plus an allow rule for vendor_hvdcp,
+#   not just a label. Revisit with the hvdcp_opti crash loop (backlog item 4).
+#
+# Not present on 5.15 / this kernel, vendor rule just stops matching (no action
+# unless a user of the node shows up in denials):
+#   ae00000.qcom.qcom,mdss_mdp/caps          (typo path in vendor; no caps node on 5.15 SDE)
+#   ae00000.../mdss_fb_primary/leds, /devices/virtual/graphics/fb0|fb1/*   (no fbdev on 5.15 DRM)
+#   soc:qcom,dsi-display-primary/{acl,cabc,dc,hbm}  (LiveDisplay uses /devices/virtual/panel/img_tune, already labelled by hardware/lge)
+#   soc:qcom,smp2p-{adsp,cdsp,dsps,modem}/wakeup (5.15 smp2p has no per-edge wakeup source; only soc:qcom,smp2p_sleepstate/wakeup)
+#   bolero va/wsa swr_ctrl wakeup               (no wakeup source on 5.15 swr master)
+#   coresight stm/tmc-etr/tmc-etf/swao-csr, soc:hwevent  (QDSS/coresight drivers not built)
+#   5c00000.qcom,ssc/subsys2, subsys7/state     (4.19 subsystem_restart; 5.15 is remoteproc-slpi.
+#                                                 Our msm_subsys compat only exposes esoc0. Check the sensors HAL denials once enforcing.)
+#   soc:fingerprint@0/wakeup/wakeup7            (vendor hardcodes the number; 5.15 has wakeup40. Covered if the
+#                                                 fingerprint wakeup needs a label: genfscon sysfs /devices/platform/soc/soc:fingerprint@0/wakeup)
+#   990000.i2c/i2c-1/1-0061 wireless            (IDT P9222 wireless charger, not in our DT)
+#   vendor:lge-veneer-psy, vendor:lge_usb_ds2/ds3, lge-unified-nodes, battery_current_limit (LG drivers not ported)
+#   /devices/virtual/panel/panel-0/brightness  (ours is /devices/virtual/panel/brightness, already labelled)
+#
+# Other img146 denials, not labels:
+#   vendor_qti_init_shell setattr sysfs "uevent" (3), vendor_init write debugfs "debug_suspend",
+#   vendor_init create "ipa", system_server setsched on ksu (KSU domain), kernel read of
+#   libQSEEComAPI.so / keymaster (our uldump debug, goes with the §11 strip).
+#
+# Regenerate: kernel workspace tmp/rom-sepolicy/{resolve,gen}.py against a fresh live listing
+#   (adb shell find /sys/devices -xdev > live-sysfs-all.txt) after the kernel cleanup,
+#   since device names can still change then.
