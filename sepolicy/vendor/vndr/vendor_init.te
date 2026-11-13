@@ -1,2 +1,5 @@
 set_prop(vendor_init, vendor_camera_prop)
 set_prop(vendor_init, vendor_console_log_level_prop)
+
+# 5.15 SSR: init.target.rc writes remoteproc "recovery" for ADSP/SLPI
+allow vendor_init vendor_sysfs_ssr_toggle:file w_file_perms;

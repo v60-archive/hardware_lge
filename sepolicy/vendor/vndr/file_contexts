@@ -17,3 +17,10 @@
 
 # Persist files
 /mnt/vendor/persist(/.*)?                               u:object_r:vendor_persist_file:s0
+
+# 5.15 SSR: remoteproc class attributes (labels as QC's 5.15 sepolicy_vndr;
+# ueventd restorecons the device paths). init.target.rc enables recovery.
+/sys/devices/platform/soc/17300000\.remoteproc-adsp/remoteproc/remoteproc[0-9]+/name     u:object_r:vendor_sysfs_ssr:s0
+/sys/devices/platform/soc/17300000\.remoteproc-adsp/remoteproc/remoteproc[0-9]+/recovery u:object_r:vendor_sysfs_ssr_toggle:s0
+/sys/devices/platform/soc/5c00000\.remoteproc-slpi/remoteproc/remoteproc[0-9]+/name      u:object_r:vendor_sysfs_ssr:s0
+/sys/devices/platform/soc/5c00000\.remoteproc-slpi/remoteproc/remoteproc[0-9]+/recovery  u:object_r:vendor_sysfs_ssr_toggle:s0
