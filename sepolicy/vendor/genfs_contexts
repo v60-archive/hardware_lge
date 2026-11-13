@@ -57,6 +57,7 @@ genfscon sysfs /devices/platform/soc/98c000.i2c/i2c-3/3-0010/98c000.i2c:qcom,smb
 genfscon sysfs /devices/platform/soc/98c000.i2c/i2c-3/3-0061/power_supply/wireless/wakeup                                                         u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/990000.i2c/i2c-1/1-0061/power_supply/wireless/wakeup38                                                       u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/990000.i2c/i2c-1/1-0061/wakeup                                                                               u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/1c10000.qcom,pcie/pci0002:00/0002:00:00.0/0002:01:00.0/mhi_0306_02.01.00/mhi_0306_02.01.00_EFS/wakeup        u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/b0000000.qcom,cnss-qca6390/wakeup                                                                             u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/c80000.i2c/i2c-3/3-0020/wakeup                                                                               u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/c80000.i2c/i2c-4/4-0020/wakeup                                                                               u:object_r:sysfs_wakeup:s0
