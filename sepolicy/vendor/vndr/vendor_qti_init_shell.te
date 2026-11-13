@@ -12,3 +12,6 @@ get_prop(vendor_qti_init_shell, vendor_lge_usb_prop)
 allow vendor_qti_init_shell sysfs:file write;
 allow vendor_qti_init_shell sysfs_charger:file rw_file_perms;
 allow vendor_qti_init_shell sysfs_charger:file { setattr };
+allow vendor_qti_init_shell vendor_sysfs_graphics:dir { setattr };
+allow vendor_qti_init_shell vendor_sysfs_usbpd_device:file { setattr };
+allow vendor_qti_init_shell sysfs_devices_block:file { setattr };
