@@ -8,3 +8,5 @@ r_dir_file(hal_audio_default, persist_lg_audio_file);
 get_prop(hal_audio_default, vendor_lge_misc_prop)
 set_prop(hal_audio_default, vendor_audio_prop)
 get_prop(hal_audio_default, lge_aisound_prop)
+
+allow hal_audio_default ion_device:chr_file r_file_perms;
