@@ -6,3 +6,5 @@ hal_server_domain(vendor_hal_neuralnetworks_qti, hal_neuralnetworks)
 hwbinder_use(vendor_hal_neuralnetworks_qti)
 add_hwservice(vendor_hal_neuralnetworks_qti, hal_neuralnetworks_hwservice)
 allow vendor_hal_neuralnetworks_qti ion_device:chr_file r_file_perms;
+allow vendor_hal_neuralnetworks_qti vendor_xdsp_device:chr_file rw_file_perms;
+get_prop(vendor_hal_neuralnetworks_qti, vendor_adsprpc_prop)
