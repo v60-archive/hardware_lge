@@ -1,1 +1,1 @@
-allow { appdomain mediacodec mediaserver mediaswcodec } ion_device:chr_file r_file_perms;
+allow { appdomain mediaserver mediaswcodec } ion_device:chr_file r_file_perms;
