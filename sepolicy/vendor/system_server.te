@@ -1,1 +1,2 @@
 r_dir_file(system_server, sysfs_lge_usb)
+r_dir_file(system_server, vendor_sysfs_battery_supply)
