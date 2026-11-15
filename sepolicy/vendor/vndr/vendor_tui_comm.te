@@ -3,3 +3,4 @@ type vendor_tui_comm_exec, exec_type, vendor_file_type, file_type;
 
 init_daemon_domain(vendor_tui_comm)
 hwbinder_use(vendor_tui_comm)
+get_prop(vendor_tui_comm, hwservicemanager_prop)
