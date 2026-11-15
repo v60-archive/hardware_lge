@@ -10,4 +10,5 @@ allow vendor_hal_drm_widevine firmware_data_file:file { rw_file_perms setattr };
 
 allow vendor_hal_drm_widevine mnt_vendor_file:dir r_dir_perms;
 r_dir_file(vendor_hal_drm_widevine, persist_lg_data_file);
+allow vendor_hal_drm_widevine ion_device:chr_file { r_file_perms ioctl };
 

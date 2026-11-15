@@ -24,3 +24,4 @@ dontaudit hal_camera_default property_type:file { getattr map open read };
 # LG Camera
 allow hal_camera_default persist_lg_camera_file:dir { add_name write };
 allow hal_camera_default persist_lg_camera_file:file create;
+allow hal_camera_default ion_device:chr_file r_file_perms;

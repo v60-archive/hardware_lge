@@ -2,3 +2,4 @@ allow platform_app camera_configs_system_file:file { getattr open read map execu
 allow platform_app persist_lg_camera_file:dir { read open map getattr search };
 allow platform_app persist_lg_camera_file:file { read open map getattr };
 get_prop(platform_app, vendor_lge_misc_prop)
+get_prop(platform_app_36, vendor_lge_misc_prop)
